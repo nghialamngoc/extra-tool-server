@@ -9,8 +9,10 @@ app.use(bodyParse.json())
 
 //Routes
 const authRouter = require('./routes/auth');
+const posts = require('./routes/posts');
 
-app.use('/api/v1/user', authRouter)
+app.use('/api/v1/user', authRouter);
+app.use('/api/v1/post', posts);
 //Connect to Db
 const mongoseConfig = {
   useNewUrlParser: true,
