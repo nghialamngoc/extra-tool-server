@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
 
-// @desc Get posts.
+// @desc Create post.
 // @acces Public.
 router.post('/', (req, res) => {
     const newPost = new Post({
@@ -16,6 +16,12 @@ router.post('/', (req, res) => {
     newPost.save().then(post => res.json(post));
 });
 
-router.get('/test', (req, res) => res.json({ msg: 'Posts Works' }));
+// @desc Get posts
+router.get('/', (req, res) => {
+    Post.find()
+        .sort({date: -1})
+        .then(post => res.json(post))
+        .catch(err => res.status(404).json('No post found!'))
+});
 
 module.exports = router;
