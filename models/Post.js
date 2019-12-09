@@ -5,15 +5,11 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
     title: {
         type: String,
-        required: true,
-        min: 6,
-        max: 100
+        required: true
     },
     content: {
         type: String,
-        required: true,
-        min: 1,
-        max: 500
+        required: true
     },
     author: {
         type: String,
