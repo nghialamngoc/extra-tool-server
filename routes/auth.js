@@ -6,8 +6,16 @@ const jwt = require('jsonwebtoken');
 const { registerValidation } = require('../common/validation');
 const validateToken = require('../common/verifyToken');
 
+//GET LIST USE
+router.get('/', async(req, res) => {
+  const userList = await User.find();
+  res.status(200).json({
+    status: 'OKE'
+  })
+})
+
 //GET INFO OF USE
-router.get('/', validateToken, async (req, res) => {
+router.post('/', validateToken, async (req, res) => {
   const user = await User.findById(req.userid);
   res.status(200).json({
     status: 'success',
@@ -18,6 +26,7 @@ router.get('/', validateToken, async (req, res) => {
     }
   })
 })
+
 //REGISTER
 router.post('/register',async ( req, res )=> {
 
