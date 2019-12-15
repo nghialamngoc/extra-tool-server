@@ -21,6 +21,14 @@ const userSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  rol: {
+    type: String,
+    default: 'User'
+  },
+  avatar: {
+    type: String,
+    default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUhppkWlawG5RJ-3KRt14HLEwTvkFVaG1R7mtPoRHdCddcxoeT&s'
   }
 })
 
