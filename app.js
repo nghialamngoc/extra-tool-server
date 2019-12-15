@@ -28,9 +28,7 @@ app.use((req, res, next) => {
 
 //Routes
 const authRouter = require('./routes/auth');
-const postRouter = require('./routes/post');
 
-app.use('/api/v1/post', postRouter);
 app.use('/api/v1/user', authRouter);
 //Connect to Db
 const mongoseConfig = {
