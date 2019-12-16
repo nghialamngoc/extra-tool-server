@@ -37,6 +37,10 @@ router.delete('/:id', (req, res) => {
         .catch(err => res.status(404).json({ nopostfound : 'No post found!' }));
 });
 
-
+router.post('/:id', (req, res) => {
+    Post.findById(req.params.id)
+        .then(post => post.update().then(()=> res.json({ success: true })))
+        .catch(err => res.status(404).json({ nopostfound : 'No post found!' }));
+});
 
 module.exports = router;
