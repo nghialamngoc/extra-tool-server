@@ -21,8 +21,12 @@ const articleSchema = new mongoose.Schema({
     default: false
   },
   createDate: {
-    type: Date,
+    type: Number,
     default: Date.now()
+  },
+  articleImg: {
+    type: String,
+    default: 'https://www.freecodecamp.org/news/content/images/size/w1000/2019/12/codingmyths.jpeg'
   }
 })
 
