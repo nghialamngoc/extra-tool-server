@@ -8,6 +8,7 @@ require('dotenv/config')
 mongoose.set('useFindAndModify', false);
 
 //Middleware
+app.use(bodyParse({limit: '50mb'}));
 app.use(bodyParse.urlencoded({ extended: false }));
 app.use(bodyParse.json());
 app.use(cookieParser(process.env.COOKIE_PARSER_SECRET));

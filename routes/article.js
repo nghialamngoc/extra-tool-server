@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 // GET ALL ARTICLE LIST
 router.get('/', (req, res) => {
-  Article.find()
+  Article.find().select('-content -isReviewed')
     .populate({
       path: 'author',
       select: 'name avatar'
@@ -56,7 +56,6 @@ router.post('/', async (req, res) => {
 
   try {
     const savedArticle = await newArticle.save();
-    message.requesMessage('POST', '/api/v1/article', savedArticle);
     res.status(200).json({
       status: 'success',
       data: savedArticle

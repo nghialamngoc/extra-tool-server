@@ -22,7 +22,8 @@ router.post('/', validateToken, async (req, res) => {
     data: {
       name: user.name,
       rol: user.rol,
-      avatar: user.avatar
+      avatar: user.avatar,
+      usId: user._id
     }
   })
 })

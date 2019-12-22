@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 
 module.exports = function(req, res, next){
   const token = req.signedCookies._actk;
-  console.log(token)
   if( !token ) return res.json({
     status: "error",
     error_code: "access_denied"
