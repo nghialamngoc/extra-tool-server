@@ -24,6 +24,10 @@ const articleSchema = new mongoose.Schema({
     type: Number,
     default: Date.now()
   },
+  editDate: {
+    type: Number,
+    default: Date.now()
+  },
   articleImg: {
     type: String,
     default: 'https://www.freecodecamp.org/news/content/images/size/w1000/2019/12/codingmyths.jpeg'

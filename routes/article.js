@@ -88,7 +88,7 @@ router.delete('/', async (req, res) => {
 
 //MODIFIER ARTICLE
 router.put('/', async (req, res) => {
-  const articleId = req.body.articleId;
+  const articleId = req.body.articleId;  
   try {
     const updatedArticle = await Article.findOneAndUpdate({
       _id: new mongoose.Types.ObjectId(articleId)
@@ -98,8 +98,8 @@ router.put('/', async (req, res) => {
       tags: req.body.tags,
       content: req.body.content,
       isReviewed: req.body.isReviewed,
-      createDate: req.body.createDate
-    });
+      editDate: req.body.editDate
+    },{ new : true });
     res.status(200).json({
       status: 'success',
       data: updatedArticle
