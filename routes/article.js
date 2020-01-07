@@ -44,7 +44,7 @@ router.get('/search', async (req, res) => {
 })
 
 //CREATE NEW ARTICLE
-router.post('/', async (req, res) => {
+router.post('/', validateToken, async (req, res) => {
   var newArticle = new Article({
     author: new mongoose.Types.ObjectId(req.body.authorId),
     title: req.body.title,
@@ -69,7 +69,7 @@ router.post('/', async (req, res) => {
 })
 
 //DELETE ARTICLE
-router.delete('/', async (req, res) => {
+router.delete('/', validateToken, async (req, res) => {
   const articleId = req.body.articleId;
   try {
     const deletedArticle = await Article.deleteOne({
@@ -87,7 +87,7 @@ router.delete('/', async (req, res) => {
 })
 
 //MODIFIER ARTICLE
-router.put('/', async (req, res) => {
+router.put('/', validateToken, async (req, res) => {
   const articleId = req.body.articleId;  
   try {
     const updatedArticle = await Article.findOneAndUpdate({
