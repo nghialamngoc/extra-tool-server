@@ -6,7 +6,10 @@ const mongoose = require('mongoose');
 
 // GET ALL ARTICLE LIST
 router.get('/', (req, res) => {
-  Article.find().select('-content -isReviewed')
+  const articleType = req.query.type || '';
+  const criteriaSearch = articleType != '' ? { tags: articleType } : {};
+  console.log(criteriaSearch)
+  Article.find(criteriaSearch).select('-content -isReviewed')
     .populate({
       path: 'author',
       select: 'name avatar'
@@ -70,9 +73,9 @@ router.post('/', validateToken, async (req, res) => {
 
 //DELETE ARTICLE
 router.delete('/', validateToken, async (req, res) => {
-  const articleId = req.body.articleId;
+  const articleId = req.query.articleId;
   try {
-    const deletedArticle = await Article.deleteOne({
+    await Article.deleteOne({
       _id: new mongoose.Types.ObjectId(articleId)
     })
     res.status(200).json({
