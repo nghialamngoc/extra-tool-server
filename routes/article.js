@@ -48,6 +48,7 @@ router.get('/search', async (req, res) => {
 
 //CREATE NEW ARTICLE
 router.post('/', validateToken, async (req, res) => {
+  console.log(req.body)
   var newArticle = new Article({
     author: new mongoose.Types.ObjectId(req.body.authorId),
     title: req.body.title,
@@ -56,7 +57,6 @@ router.post('/', validateToken, async (req, res) => {
     isReviewed: req.body.isReviewed,
     createDate: req.body.createDate
   });
-
   try {
     const savedArticle = await newArticle.save();
     res.status(200).json({
